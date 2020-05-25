@@ -1,0 +1,32 @@
+@charset "utf-8";
+@import "normalize";
+
+// abstracts
+@import "./abstracts/variables";
+@import "./abstracts/mixin";
+@import "./abstracts/visually_hidden";
+@import "./abstracts/animations";
+
+// general
+@import "./general/fonts";
+@import "./general/scaffolding";
+
+// components
+@import "./components/wrapper";
+@import "./components/container";
+@import "./components/button_hover";
+@import "./components/button";
+@import "./components/title";
+@import "./components/advantage";
+@import "./components/table";
+@import "./components/modal";
+
+// blocks
+@import "./blocks/header";
+@import "./blocks/footer";
+@import "./blocks/preamble";
+@import "./blocks/advantages";
+@import "./blocks/clients";
+@import "./blocks/contacts";
+@import "./blocks/form";
+@import "./blocks/message";

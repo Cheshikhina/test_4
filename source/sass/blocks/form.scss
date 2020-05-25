@@ -1,0 +1,76 @@
+.form {
+
+  input,
+  textarea {
+    @include input("false");
+    width: 100%;
+    margin-bottom: 32px;
+    padding: 21px rem(42px);
+    background-color: $white;
+    background: 0 0;
+    border: 1px solid rgba($shadow_1, 0.4);
+    border-radius: $br_10;
+    outline: 0;
+    resize: none;
+    transition: $transition;
+
+    overflow: auto;
+
+    @each $placeholder in $placeholders_dots {
+      &::#{$placeholder} {
+        @include input("true");
+        transition: $transition;
+      }
+    }
+
+    @each $placeholder in $placeholders_dot {
+      &:#{$placeholder} {
+        @include input("true");
+        transition: $transition;
+      }
+    }
+
+    &:focus {
+      background-color: $white;
+      border: 1px solid rgba($shadow_1, 0.8);
+
+
+      @each $placeholder in $placeholders_dots {
+        &::#{$placeholder} {
+          opacity: 0;
+        }
+      }
+
+      @each $placeholder in $placeholders_dot {
+        &:#{$placeholder} {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  input {
+    height: 72px;
+  }
+
+  textarea {
+    min-height: 144px;
+  }
+
+  label {
+    @include font($fs_16, $lh_30);
+    position: relative;
+    letter-spacing: $ls_004;
+    margin-bottom: 8px;
+
+    span {
+      @include font(10px, 8px);
+      position: absolute;
+      display: block;
+      bottom: -25px;
+      left: 15px;
+      font-weight: 600;
+      color: $error;
+    }
+  }
+}

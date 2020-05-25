@@ -1,0 +1,62 @@
+// sizes
+$mobile_min: 320px;
+$mobile_max: 768px;
+$tablet_max: 1024px;
+$desktop_max: 1200px;
+$no_mobile: 769px;
+
+// color scheme
+$white: #ffffff;
+$black: #000000;
+$text_dark: #1F3F68;
+$text_light: #F2F2F2;
+$background_button: #5A98D0;
+$accent_1: #316099;
+$shadow_1: #356ead;
+$shadow_2: #1070b1;
+$table: #9CC1E3;
+$error: #F58A8A;
+
+// fonts size
+$main_font: 16px;
+
+@media (max-width: $mobile_max) {
+  $main_font: 14px;
+}
+
+$fs_14: 14px;
+$fs_16: 16px;
+$fs_20: 20px;
+$fs_28: 28px;
+$fs_36: 36px;
+$fs_64: 64px;
+
+$lh_26: 26px;
+$lh_30: 30px;
+$lh_46: 46px;
+$lh_74: 74px;
+
+// another
+$transition: all 0.3s;
+$duration: 0.75s;
+$opacity: 0.87;
+$opacity_02: 0.2;
+$opacity_06: 0.6;
+$shadow_button: 5px 10px 20px rgba($shadow_1, 0.2);
+$shadow_card: 5px 20px 50px rgba($shadow_2, 0.2);
+$shadow_popup: 5px 10px 50px rgba($shadow_2, 0.2);
+$gradient: linear-gradient(0deg, #98C3E8 8.84%, rgba(152, 195, 232, 0) 31.12%);
+$br_10: 10px;
+$br_block_1: 200px 0 0 0;
+$br_block_2: 0 200px 0 0;
+$br_header_nav: 100px 0 100px 0;
+$ls_002: 0.02em;
+$ls_003: 0.03em;
+$ls_004: 0.04em;
+$ls_005: 0.05em;
+$placeholders_dots: "-moz-placeholder", "-webkit-input-placeholder", "placeholder";
+$placeholders_dot: "-moz-placeholder", "-ms-input-placeholder";
+
+// retina
+$retina_dpi: 144dpi;
+$retina_dppx: 1.5dppx;

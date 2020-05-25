@@ -1,0 +1,162 @@
+.table {
+  @include list;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+
+  @media screen and (-ms-high-contrast: active),
+  (-ms-high-contrast: none) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.table__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid $table;
+  border-bottom: 1px solid transparent;
+
+  @media screen and (-ms-high-contrast: active),
+  (-ms-high-contrast: none) {
+    width: 25%;
+  }
+
+  &:nth-child(4n) {
+    border-right: none;
+  }
+
+  &:nth-child(4n):not(:last-child) {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: -1px;
+      right: 0;
+      height: 1px;
+      width: 100vw;
+      background-color: $table;
+    }
+  }
+}
+
+.table__link {
+  @include font($fs_20, $lh_46);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 129px;
+  padding-bottom: 4px;
+  padding-left: 3px;
+  font-weight: 600;
+  letter-spacing: $ls_002;
+  color: $text_light;
+  background-color: $background_button;
+
+  @media screen and (-ms-high-contrast: active),
+  (-ms-high-contrast: none) {
+    padding: 41px 20px;
+  }
+}
+
+.table__link--more {
+  background-color: rgba($text_dark, 0.2);
+}
+
+@media (max-width: $tablet_max) {
+  .table {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .table__item {
+
+    @media screen and (-ms-high-contrast: active),
+    (-ms-high-contrast: none) {
+      width: 33.333%;
+    }
+
+    &:nth-child(4n) {
+      border-right: 1px solid $table;
+    }
+
+    &:nth-child(4n):not(:last-child) {
+      &::after {
+        display: none;
+      }
+    }
+
+    &:nth-child(3n) {
+      border-right: none
+    }
+
+    &:nth-child(3n):not(:last-child) {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        bottom: -1px;
+        right: 0;
+        height: 1px;
+        width: 100vw;
+        background-color: $table;
+      }
+    }
+  }
+
+  .table__link {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: $mobile_max) {
+  .table {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .table__item {
+
+    @media screen and (-ms-high-contrast: active),
+    (-ms-high-contrast: none) {
+      width: 50%;
+    }
+
+    &:nth-child(3n) {
+      border-right: 1px solid $table;
+    }
+
+    &:nth-child(3n):not(:last-child) {
+      &::after {
+        display: none;
+      }
+    }
+
+    &:nth-child(2n) {
+      border-right: none;
+    }
+
+    &:nth-child(2n):not(:last-child) {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        bottom: -1px;
+        right: 0;
+        height: 1px;
+        width: 100vw;
+        background-color: $table;
+      }
+    }
+  }
+
+  .table__link {
+    @include font($fs_16, $lh_30);
+  }
+}

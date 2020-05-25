@@ -1,0 +1,77 @@
+html,
+body {
+  height: 100%;
+  font-size: $main_font;
+}
+
+body {
+  min-width: $mobile_min;
+  margin: 0;
+  font-weight: 400;
+  font-family: "Gilroy", "Arial", sans-serif;
+  word-wrap: normal;
+  color: $text_dark;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus {
+  outline: none;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.body_hidden {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  &::before {
+    position: fixed;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+
+  @media (max-width: $mobile_max) {
+    overflow: hidden;
+    position: fixed;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.body_modal {
+  overflow-y: hidden;
+  position: fixed;
+  width: 100%;
+}

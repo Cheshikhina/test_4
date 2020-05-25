@@ -1,0 +1,9 @@
+.title {
+  @include title;
+  margin: 0;
+  color: $text_dark;
+}
+
+.title--light {
+  color: $white;
+}

@@ -1,0 +1,219 @@
+ .modal {
+   background-color: rgba($white, 0.5);
+   position: fixed;
+   display: flex;
+   align-items: center;
+   width: 100%;
+   height: 100%;
+   min-height: 100vh;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   padding: 30px;
+   overflow-y: auto;
+   z-index: -100;
+   opacity: 0;
+ }
+
+ .modal__content {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   width: 100%;
+   max-width: 540px;
+   height: auto;
+   margin: auto;
+   padding: 56px;
+   background-color: $white;
+   border-radius: $br_10;
+   opacity: 0;
+   box-shadow: $shadow_popup;
+   z-index: -100;
+
+   form {
+     display: flex;
+     flex-direction: column;
+   }
+
+   button[type="submit"] {
+     @include button;
+     @include text("button");
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 72px;
+     width: 100%;
+     margin-top: 40px;
+     padding: 10px;
+     color: $white;
+     background-color: $background_button;
+     box-shadow: $shadow_card;
+     border-radius: $br_10;
+     transition: $transition;
+     overflow: hidden;
+     z-index: 0;
+
+     &::before,
+     &::after {
+       content: "";
+       position: absolute;
+       left: 0;
+       right: 0;
+       top: 0;
+       bottom: 0;
+       opacity: 0;
+       border-radius: 50%;
+     }
+
+     &::before {
+       background-color: darken($background_button, 10);
+       width: 0;
+       height: 0;
+       margin: auto;
+       transform: scale(0);
+       z-index: -1;
+       transition: all $duration;
+     }
+
+     &::after {
+       background-color: $white;
+       width: 100%;
+       height: 100%;
+       margin: auto;
+       transform: scale(1);
+       transition: all $duration ease-in-out;
+     }
+
+     &:active::after {
+       transform: scale(0);
+       opacity: 1;
+       transition: 0s;
+     }
+   }
+
+   button[type="reset"] {
+     @include button;
+     position: absolute;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 24px;
+     height: 16px;
+     padding: 8px 0;
+     right: 30px;
+     top: 30px;
+
+     &::before,
+     &::after {
+       position: absolute;
+       content: "";
+       display: block;
+       width: 100%;
+       height: 2px;
+       left: 50%;
+       top: 50%;
+       background-color: $shadow_1;
+       transition: $transition;
+     }
+
+     &::before {
+       transform: translate(-50%, -50%) rotate(-45deg);
+     }
+
+     &::after {
+       transform: translate(-50%, -50%) rotate(45deg);
+     }
+
+     &:active {
+       opacity: $opacity;
+
+       &::before,
+       &::after {
+         background-color: darken($shadow_1, 10);
+       }
+     }
+   }
+ }
+
+ .modal__title,
+ .modal__text {
+   @include subtitle;
+   margin: 0;
+   margin-bottom: 48px;
+   letter-spacing: $ls_004;
+ }
+
+ .modal--open {
+   z-index: 50;
+   animation: open_overlay 0.3s forwards;
+
+   @media screen and (-ms-high-contrast: active),
+   (-ms-high-contrast: none) {
+     overflow-x: hidden;
+   }
+ }
+
+ .modal__content--open {
+   position: relative;
+   z-index: 50;
+   animation: open_modal $duration 0.3s forwards;
+ }
+
+ .modal--close {
+   z-index: 50;
+   opacity: 1;
+   animation: close_overlay $duration 0.3s forwards;
+
+   @media screen and (-ms-high-contrast: active),
+   (-ms-high-contrast: none) {
+     overflow-x: hidden;
+   }
+ }
+
+ .modal__content--close {
+   position: relative;
+   z-index: 50;
+   opacity: 1;
+   animation: close_modal $duration forwards;
+ }
+
+ @media (max-width: $mobile_max) {
+   .modal {
+     padding: 0;
+   }
+
+  .modal__content--open {
+    padding: 70px 30px;
+    padding-bottom: 100px;
+    border-radius: 0;
+     overflow: hidden;
+   }
+
+   .modal__content--close {
+     max-height: 0 !important;
+   }
+ }
+
+ @media (min-width: $no_mobile) {
+
+   .modal__content form button[type="submit"]:hover,
+   .modal__content form button[type="submit"]:focus {
+     &::before {
+       width: 100%;
+       height: 100%;
+       transform: scale(2);
+       opacity: 1;
+     }
+   }
+
+   .modal__content form button[type="reset"]:hover,
+   .modal__content form button[type="reset"]:focus {
+
+     &::before,
+     &::after {
+       background-color: darken($shadow_1, 10);
+     }
+   }
+ }

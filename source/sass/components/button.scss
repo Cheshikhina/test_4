@@ -1,0 +1,16 @@
+.button {
+  @include button;
+  @include text("button");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 56px;
+  width: 100%;
+  max-width: 220px;
+  padding: 10px;
+  padding-top: 7px;
+  color: $white;
+  background-color: $background_button;
+  box-shadow: $shadow_button;
+  border-radius: $br_10;
+}

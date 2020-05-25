@@ -1,0 +1,106 @@
+.advantage {
+  width: 100%;
+  max-width: 380px;
+  min-height: 525px;
+  box-shadow: $shadow_card;
+  padding: 0 47px 49px 48px;
+  border-radius: $br_10;
+}
+
+$height_img: 234px;
+
+.advantage__image {
+  height: $height_img;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 54px;
+}
+
+.advantage__title {
+  @include subtitle;
+  margin: 0;
+  margin-bottom: 17px;
+}
+
+.advantage__text {
+  @include text("text");
+  margin: 0;
+  margin-bottom: 32px;
+}
+
+.advantage__link {
+  @include font($fs_14, $lh_30);
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: $background_button;
+  letter-spacing: $ls_005;
+  transition: $transition;
+
+  span {
+    position: relative;
+    margin-left: 28px;
+    width: 16px;
+    height: 16px;
+    transition: margin 0.3s $duration ease-in-out;
+  }
+
+  svg {
+    position: absolute;
+    top: 1px;
+    fill: $background_button;
+    transition: all $duration;
+  }
+
+  &:active {
+    color: darken($background_button, 10);
+    opacity: $opacity;
+
+    svg {
+      fill: darken($background_button, 10);
+      transform: rotate(-180deg);
+    }
+  }
+}
+
+.advantage--big_img {
+  .advantage__image {
+    padding-bottom: 48px;
+    margin-top: 1px;
+    margin-left: 9px;
+  }
+}
+
+.advantage__image--man {
+  margin-right: 21.1%;
+}
+
+.advantage__image--woman {
+  margin-right: 14.2%;
+}
+
+@media (max-width: $tablet_max) {
+  .advantage {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: $no_mobile) {
+
+  .advantage__link:hover,
+  .advantage__link:focus {
+    color: darken($background_button, 10);
+
+    span {
+      margin-left: 13px;
+      padding-right: 14px;
+      transition: margin 0.3s $duration ease-in-out;
+    }
+
+    svg {
+      fill: darken($background_button, 10);
+      transform: rotate(-180deg);
+    }
+  }
+}

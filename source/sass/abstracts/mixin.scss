@@ -1,0 +1,133 @@
+@function rem($size) {
+  @return $size / $main_font*1rem;
+}
+
+@function decimal_round ($number, $digits: 0, $mode: round) {
+  $n: 1;
+
+  @if type-of($number) !=number {
+    @warn '#{ $number } is not a number.';
+    @return $number;
+  }
+
+  @if type-of($digits) !=number {
+    @warn '#{ $digits } is not a number.';
+    @return $number;
+  }
+
+  @else if not unitless($digits) {
+    @warn '#{ $digits } has a unit.';
+    @return $number;
+  }
+
+  @if $digits>0 {
+    @for $i from 1 through $digits {
+      $n: $n * 10;
+    }
+  }
+
+  @if $mode==round {
+    @return round($number * $n)/$n;
+  }
+
+  @else if $mode==ceil {
+    @return ceil($number * $n)/$n;
+  }
+
+  @else if $mode==floor {
+    @return floor($number * $n)/$n;
+  }
+
+  @else {
+    @warn '#{ $mode } is undefined keyword.';
+    @return $number;
+  }
+}
+
+@mixin font($size, $line_height) {
+  font-size: rem($size);
+  line-height: decimal_round($line_height/$size*100%);
+}
+
+@mixin visually_hidden {
+  position: absolute;
+  width: 1px;
+  min-width: initial;
+  height: 1px;
+  min-height: initial;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+
+@mixin list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+@mixin button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+@mixin title {
+  @include font($fs_36, $lh_46);
+  font-weight: 600;
+  letter-spacing: $ls_005;
+}
+
+@mixin subtitle {
+  @include font($fs_20, $lh_30);
+  font-weight: 600;
+  letter-spacing: $ls_005;
+}
+
+@mixin input ($isPlaceholder) {
+  @include font($fs_20, $lh_30);
+  color: $text_dark;
+  letter-spacing: $ls_004;
+
+  @if ($isPlaceholder=="true") {
+    font-weight: 300;
+    color: rgba($text_dark, $opacity_02);
+
+    @media screen and (-ms-high-contrast: active),
+    (-ms-high-contrast: none) {
+      color: rgba($text_dark, $opacity_02) !important;
+    }
+  }
+}
+
+
+@mixin text ($type) {
+  @include font($fs_16, $lh_26);
+
+  @if ($type=="button") {
+    letter-spacing: $ls_004;
+  }
+
+  @if ($type=="text") {
+    letter-spacing: $ls_005;
+    opacity: $opacity_06;
+  }
+
+  @if ($type=="footer") {
+    letter-spacing: $ls_005;
+  }
+}
+
+@mixin container ($max_width, $padding: 0) {
+  width: 100%;
+  max-width: $max_width*1px + $padding*2px;
+  margin: 0 auto;
+  padding: 0 $padding*1px;
+}

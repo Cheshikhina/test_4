@@ -1,0 +1,47 @@
+.wrapper {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.wrapper--back_gradient::before {
+  width: 100%;
+  height: 100%;
+  background-image: $gradient;
+  opacity: $opacity_02;
+}
+
+.wrapper--back_1::before {
+  background-color: $background_button;
+  border-radius: $br_block_1;
+  z-index: -1;
+}
+
+.wrapper__back_2 {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100% - 7%;
+    margin-right: 7%;
+    background-color: $accent_1;
+    border-radius: $br_block_2;
+    z-index: -1;
+  }
+}
+
+@media (max-width: $tablet_max) {
+  .wrapper__back_2::before {
+    width: 100%;
+    max-width: 924px;
+  }
+}
